@@ -1,0 +1,1 @@
+angular.module("hciServices",["ngSanitize"]).factory("hciService",["$sce",function(r){var e=function(r){for(var e=window.location.search.substring(1),i=e.split("&"),n=0;n<i.length;n++){var t=i[n].split("=");if(t[0]==r)return t[1]}return!1};return{getURLParameter:e}}]);

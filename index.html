@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Shop Homepage - Start Bootstrap Template</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/shop-homepage.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <style>
+        #map-canvas {
+            width: 100%;
+            height: 300px;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+
+</head>
+
+<body ng-app="hciApp">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Start Bootstrap</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="#">About</a>
+                    </li>
+                    <li>
+                        <a href="#">Services</a>
+                    </li>
+                    <li>
+                        <a href="#">Contact</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Page Content -->
+    <div class="container" ng-controller="hciSearchResults as search">
+
+        <div class="row">
+
+            <div class="col-md-3">
+                <h1 class="lead">Hotel Name</h1>
+                <div class="list-group">
+                    <input ng-model="search.query">
+                </div>
+
+                <hr>
+
+                <button class="btn btn-primary" ng-click="search.test()">Console.log( Hotels );</button>
+
+                <hr>
+
+                <h3>Neighborhood</h3>
+                <ul class="nav nav-sidebar filter-area">
+					<li class="checkbox">
+                        <label>
+    						<input type="checkbox" ng-click="search.toggleNeighborhood('Convention Center Area')" ng-checked="hotelNeighborhood.indexOf('Convention Center Area') > -1" value="Convention Center Area" /> Convention Center Area
+    					</label>
+                	</li>
+                    <li class="checkbox">
+                        <label>
+    						<input type="checkbox" ng-click="search.toggleNeighborhood('Downtown Disney Area')" ng-checked="hotelNeighborhood.indexOf('Downtown Disney Area') > -1" value="Downtown Disney Area" /> Downtown Disney Area
+    					</label>
+                	</li>
+                    <li class="checkbox">
+                        <label>
+    						<input type="checkbox" ng-click="search.toggleNeighborhood('International Drive')" ng-checked="hotelNeighborhood.indexOf('International Drive') > -1" value="International Drive" /> International Drive
+    					</label>
+                	</li>
+                    <li class="checkbox">
+                        <label>
+    						<input type="checkbox" ng-click="search.toggleNeighborhood('Kissimmee')" ng-checked="hotelNeighborhood.indexOf('Kissimmee') > -1" value="Kissimmee" /> Kissimmee
+    					</label>
+                	</li>
+                    <li class="checkbox">
+                        <label>
+    						<input type="checkbox" ng-click="search.toggleNeighborhood('Lake Buena Vista')" ng-checked="hotelNeighborhood.indexOf('Lake Buena Vista') > -1" value="Lake Buena Vista" /> Lake Buena Vista
+    					</label>
+                	</li>
+                    <li class="checkbox">
+                        <label>
+    						<input type="checkbox" ng-click="search.toggleNeighborhood('Orlando International Airport Area')" ng-checked="hotelNeighborhood.indexOf('Orlando International Airport Area') > -1" value="Orlando International Airport Area" /> Orlando International Airport Area
+    					</label>
+                	</li>
+                    <li class="checkbox">
+                        <label>
+    						<input type="checkbox" ng-click="search.toggleNeighborhood('Seaworld Orlando Area')" ng-checked="hotelNeighborhood.indexOf('Seaworld Orlando Area') > -1" value="Seaworld Orlando Area" /> Seaworld Orlando Area
+    					</label>
+                	</li>
+                    <li class="checkbox">
+                        <label>
+    						<input type="checkbox" ng-click="search.toggleNeighborhood('Universal Orlando Resort Area')" ng-checked="hotelNeighborhood.indexOf('Universal Orlando Resort Area') > -1" value="Universal Orlando Resort Area" /> Universal Orlando Resort Area
+    					</label>
+                	</li>
+                    <li class="checkbox">
+                        <label>
+    						<input type="checkbox" ng-click="search.toggleNeighborhood('Walt Disney World Resort Area')" ng-checked="hotelNeighborhood.indexOf('Walt Disney World Resort Area') > -1" value="Walt Disney World Resort Area" /> Walt Disney World Resort Area
+    					</label>
+                	</li>
+				</ul>
+
+                <hr>
+
+                <h3>Amenities</h3>
+				<div class="checkbox">
+					<label>
+						<input type="checkbox" ng-click="search.toggleTag('Bar/lounge')" ng-checked="hotelTags.indexOf('Bar/lounge') > -1" value="Bar/lounge" /> Bar/lounge
+					</label>
+				</div>
+	            <div class="checkbox">
+	            	<label>
+	            		<input type="checkbox" ng-click="search.toggleTag('Business facilities')" ng-checked="hotelTags.indexOf('Business facilities') > -1" value="Business facilities" /> Business facilities
+	            	</label>
+	            </div>
+	            <div class="checkbox">
+	            	<label>
+	            		<input type="checkbox" ng-click="search.toggleTag('Fitness facilities')" ng-checked="hotelTags.indexOf('Fitness facilities') > -1" value="Fitness facilities" /> Fitness facilities
+	            	</label>
+	            </div>
+	            <div class="checkbox">
+	            	<label>
+	            		<input type="checkbox" ng-click="search.toggleTag('Laundry facilities')" ng-checked="hotelTags.indexOf('Laundry facilities') > -1" value="Laundry facilities" /> Laundry facilities
+	            	</label>
+	            </div>
+	            <div class="checkbox">
+	            	<label>
+	            		<input type="checkbox" ng-click="search.toggleTag('Meeting space')" ng-checked="hotelTags.indexOf('Meeting space') > -1" value="Meeting space" /> Meeting space
+	            	</label>
+	            </div>
+	            <div class="checkbox">
+	            	<label>
+	            		<input type="checkbox" ng-click="search.toggleTag('On-site dining')" ng-checked="hotelTags.indexOf('On-site dining') > -1" value="On-site dining" /> On-site dining
+	            	</label>
+	            </div>
+	            <div class="checkbox">
+	            	<label>
+	            		<input type="checkbox" ng-click="search.toggleTag('Pool')" ng-checked="hotelTags.indexOf('Pool') > -1" value="Pool" /> Pool
+	            	</label>
+	            </div>
+	            <div class="checkbox">
+	            	<label>
+	            		<input type="checkbox" ng-click="search.toggleTag('Theme park shuttle')" ng-checked="hotelTags.indexOf('Theme park shuttle') > -1" value="Theme park shuttle" /> Theme park shuttle
+	            	</label>
+	            </div>
+            </div>
+
+            <div class="col-md-9">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div id="map-canvas"></div>
+                    </div>
+                </div>
+
+                <hr>
+
+                <div class="row" ng-repeat="hotel in filteredHotels = (hotels | tag:search.hotelTags | filter:{name: search.query} | neighborhood:search.hotelNeighborhood)">
+
+                	<div class="col-sm-4">
+						<a href="" ng-click="search.selectHotel($event, hotel)"><img class="thumbnail img-responsive" src="http://placehold.it/320x150" alt=""></a>
+					</div>
+
+					<div class="col-sm-8">
+						<h4><a href="#" ng-click="search.selectHotel($event, hotel)" ng-bind-html="hotel.name"></a></h4>
+                        <p>{{ hotel.address }}</p>
+                        <div collapse="!hotel.isCollapsed" ng-bind-html="hotel.summary"></div>
+					</div>
+                    <div ng-if="($index + 1) % 7 == 0" class="well text-center col-xs-12">
+                        <h2>(800) 867-5309</h2>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+    <!-- /.container -->
+
+    <div class="container">
+
+        <hr>
+
+        <!-- Footer -->
+        <footer>
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>Copyright &copy; Your Website 2014</p>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+    <!-- /.container -->
+
+    <!-- Google Maps API -->
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+
+    <!-- AngularJS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.16/angular.min.js"></script>
+    <script src="https://code.angularjs.org/1.3.16/angular-sanitize.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.12.0/ui-bootstrap-tpls.min.js"></script>
+    
+
+
+
+    <!-- AngularJS Custom Files -->
+    <script src="js/hciAJAX.js"></script>
+    <script src="js/hciServices.js"></script>
+    <script src="js/hciApp.js"></script>
+
+
+
+
+</body>
+
+</html>
